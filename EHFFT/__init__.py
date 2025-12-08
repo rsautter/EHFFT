@@ -1,2 +1,2 @@
-import .ehexFFT.*
-import .plot.*
+from .ehexFFT import *
+from .plot import *
