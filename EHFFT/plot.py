@@ -3,9 +3,9 @@ from matplotlib import colormaps
 import numpy as np
 
 def hexPlot(mat, cmap = colormaps['viridis'],toRemove=-1):
-    '''
+  '''
     Hexagonal plot with matplotlib colormap
-    '''
+  '''
   th = np.linspace(np.pi/2,5*np.pi/2,7)[:-1]
   for y in range(mat.shape[0]):
     for x in range(mat.shape[1]):
@@ -21,9 +21,9 @@ def hexPlot(mat, cmap = colormaps['viridis'],toRemove=-1):
         
 
 def hexBwPlot(mat,toRemove=-1): 
-    '''
-    Hexagonal plot Black and White
-    '''
+  '''
+    Hexagonal plot Black and Whit
+  '''
   th = np.linspace(np.pi/2,5*np.pi/2,7)[:-1]
   for y in range(mat.shape[0]):
     for x in range(mat.shape[1]):
