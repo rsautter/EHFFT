@@ -55,10 +55,10 @@ def hexFFT(mat):
     vert[:,i] = torch.fft.fft(mat[:,i].clone())
   return vert, diagUp, diagDown
 
-def hexIFFT(vert, diagUp, diagDown):
-  diagUpIFT = torch.zeros(mat.shape,dtype=torch.complex64)
-  diagDownIFT = torch.zeros(mat.shape,dtype=torch.complex64)
-  vertIFT = torch.zeros(mat.shape,dtype=torch.complex64)
+def hexIFFT(vert, diagUp, diagDown,kernel=[.5,.25,.25]):
+  diagUpIFT = torch.zeros(vert.shape,dtype=torch.complex64)
+  diagDownIFT = torch.zeros(vert.shape,dtype=torch.complex64)
+  vertIFT = torch.zeros(vert.shape,dtype=torch.complex64)
 
   supportTensor = torch.zeros(2*mat.shape[1])
   for i in range(diagUp.shape[0]//2):
@@ -85,5 +85,8 @@ def hexIFFT(vert, diagUp, diagDown):
 
   for i in range(diagUp.shape[0]):
     vertIFT[:,i] = torch.fft.ifft(vert[:,i])
-  return vertIFT, diagUpIFT, diagDownIFT
+  if kernel is None:
+    return vertIFT, diagUpIFT, diagDownIFT
+  else:
+    return kernel[0]*vertIFT+kernel[1]*diagUpIFT+kernel[2]*diagDownIFT
 
