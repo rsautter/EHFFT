@@ -60,7 +60,7 @@ def hexIFFT(vert, diagUp, diagDown,kernel=[.5,.25,.25]):
   diagDownIFT = torch.zeros(vert.shape,dtype=torch.complex64)
   vertIFT = torch.zeros(vert.shape,dtype=torch.complex64)
 
-  supportTensor = torch.zeros(2*vet.shape[1])
+  supportTensor = torch.zeros(2*vert.shape[1])
   for i in range(diagUp.shape[0]//2):
     for j in range(2*diagUp.shape[1]):
       ptsUpX = (i+hexUpDiag(j)[0])%diagUp.shape[0]
